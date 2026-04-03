@@ -13,7 +13,6 @@ dist-ssr
 *.local
 
 # Local data
-server/database.json
 .env
 
 # Editor directories and files

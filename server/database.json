@@ -1,0 +1,35 @@
+{
+  "users": [
+    {
+      "_id": "42526931-7652-407f-bb87-159f993141fb",
+      "name": "Admin",
+      "email": "admin@s4fitness.gym",
+      "password": "$2b$12$iq.4Pf8rS7oGVbUnjrGi0eJfE2mVpMTQsgLTCWHhXcoQIngovp08e",
+      "phone": "",
+      "rfidTag": null,
+      "hasMembership": true,
+      "membershipPlan": "",
+      "membershipStart": null,
+      "membershipExpiry": null,
+      "role": "admin",
+      "isInsideGym": false,
+      "createdAt": "2026-04-03T07:15:31.722Z"
+    },
+    {
+      "_id": "e8267a55-90aa-4f7f-8a8c-cd8279359748",
+      "name": "Browser Test",
+      "email": "browser@test.com",
+      "password": "$2b$12$vUHkkssO9Tl/.ZsLClvVCONAIV01l/e5BDr71aehmedKdFgHVjXR.",
+      "phone": "1234567890",
+      "rfidTag": null,
+      "hasMembership": false,
+      "membershipPlan": "",
+      "membershipStart": null,
+      "membershipExpiry": null,
+      "role": "member",
+      "isInsideGym": false,
+      "createdAt": "2026-04-03T18:08:42.813Z"
+    }
+  ],
+  "accessLogs": []
+}
