@@ -76,7 +76,7 @@ export default function Home() {
               </div>
               <div className="hero__stat-divider" />
               <div className="hero__stat">
-                <span className="hero__stat-number">10+</span>
+                <span className="hero__stat-number">3+</span>
                 <span className="hero__stat-label">Years Legacy</span>
               </div>
             </div>
