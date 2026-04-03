@@ -13,12 +13,12 @@
   --color-bg-glass: rgba(255, 255, 255, 0.03);
   --color-bg-glass-border: rgba(255, 255, 255, 0.06);
 
-  --color-accent: #C9A84C;
-  --color-accent-light: #d4b85e;
-  --color-accent-dark: #a8893e;
-  --color-accent-glow: rgba(201, 168, 76, 0.25);
-  --color-secondary: #e8d5a3;
-  --color-secondary-glow: rgba(232, 213, 163, 0.15);
+  --color-accent: #C8102E;
+  --color-accent-light: #DF1638;
+  --color-accent-dark: #9A0C22;
+  --color-accent-glow: rgba(200, 16, 46, 0.25);
+  --color-secondary: #E32943;
+  --color-secondary-glow: rgba(227, 41, 67, 0.15);
 
   --color-text-primary: #f0f0f0;
   --color-text-secondary: #999999;
@@ -564,9 +564,9 @@ h4 { font-size: var(--fs-xl); }
   text-transform: uppercase;
   letter-spacing: 0.1em;
   border-radius: var(--radius-full);
-  background: rgba(201, 168, 76, 0.12);
+  background: rgba(200, 16, 46, 0.12);
   color: var(--color-accent);
-  border: 1px solid rgba(201, 168, 76, 0.25);
+  border: 1px solid rgba(200, 16, 46, 0.25);
 }
 
 .overlay {

@@ -231,10 +231,10 @@ export default function About() {
           align-items: center;
           justify-content: center;
           border-radius: var(--radius-full);
-          background: rgba(201, 168, 76, 0.1);
+          background: rgba(200, 16, 46, 0.1);
           color: var(--color-accent);
           margin: 0 auto var(--space-lg);
-          border: 1px solid rgba(201, 168, 76, 0.2);
+          border: 1px solid rgba(200, 16, 46, 0.2);
         }
         .value-card__title {
           font-size: var(--fs-lg);
@@ -319,7 +319,7 @@ export default function About() {
         }
         .why-item:hover {
           border-color: var(--color-accent);
-          background: rgba(201, 168, 76, 0.05);
+          background: rgba(200, 16, 46, 0.05);
         }
 
         @media (max-width: 1024px) {

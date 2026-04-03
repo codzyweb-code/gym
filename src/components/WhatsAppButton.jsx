@@ -20,20 +20,20 @@ export default function WhatsAppButton() {
           right: 24px;
           width: 56px;
           height: 56px;
-          background: #C9A84C;
+          background: #C8102E;
           border-radius: var(--radius-full);
           display: flex;
           align-items: center;
           justify-content: center;
           color: white;
           z-index: var(--z-whatsapp);
-          box-shadow: 0 4px 20px rgba(201, 168, 76, 0.35);
+          box-shadow: 0 4px 20px rgba(200, 16, 46, 0.35);
           transition: all var(--transition-base);
           animation: pulse 2s infinite;
         }
         .whatsapp-btn:hover {
           transform: scale(1.1);
-          box-shadow: 0 6px 28px rgba(201, 168, 76, 0.5);
+          box-shadow: 0 6px 28px rgba(200, 16, 46, 0.5);
         }
         .whatsapp-btn__tooltip {
           position: absolute;

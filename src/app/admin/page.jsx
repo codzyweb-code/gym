@@ -124,9 +124,9 @@ export default function Admin() {
         {/* MESSAGE TOAST */}
         {message && (
           <div style={{
-            background: 'rgba(201,168,76,0.1)', border: '1px solid rgba(201,168,76,0.3)',
+            background: 'rgba(200, 16, 46,0.1)', border: '1px solid rgba(200, 16, 46,0.3)',
             borderRadius: 'var(--radius-md)', padding: 'var(--space-md)', marginBottom: 'var(--space-xl)',
-            color: '#C9A84C', fontSize: 'var(--fs-sm)', textAlign: 'center',
+            color: '#C8102E', fontSize: 'var(--fs-sm)', textAlign: 'center',
           }}>
             {message}
           </div>
@@ -158,7 +158,7 @@ export default function Admin() {
                         <p className="text-muted" style={{ fontSize: 'var(--fs-xs)' }}>{m.email}</p>
                         <p style={{ fontSize: 'var(--fs-xs)', marginTop: 2 }}>
                           {m.hasMembership
-                            ? <span style={{ color: '#C9A84C' }}>✓ {m.membershipPlan}</span>
+                            ? <span style={{ color: '#C8102E' }}>✓ {m.membershipPlan}</span>
                             : <span style={{ color: '#f87171' }}>✗ No membership</span>
                           }
                         </p>

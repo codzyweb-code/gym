@@ -14,7 +14,7 @@ const blogPosts = [
     author: 'Vikram Rathore',
     date: 'Mar 28, 2026',
     readTime: '5 min read',
-    color: '#C9A84C',
+    color: '#C8102E',
   },
   {
     slug: 'hiit-vs-steady-cardio',
@@ -34,7 +34,7 @@ const blogPosts = [
     author: 'Neha Gupta',
     date: 'Mar 15, 2026',
     readTime: '10 min read',
-    color: '#a8893e',
+    color: '#9A0C22',
   },
   {
     slug: 'yoga-benefits-for-athletes',
@@ -54,7 +54,7 @@ const blogPosts = [
     author: 'Neha Gupta',
     date: 'Mar 1, 2026',
     readTime: '8 min read',
-    color: '#d4b85e',
+    color: '#DF1638',
   },
   {
     slug: 'recovery-tips-muscle-soreness',

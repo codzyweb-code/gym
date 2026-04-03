@@ -232,7 +232,7 @@ export default function Navbar() {
           width: 40px;
           height: 40px;
           border-radius: 50%;
-          background: linear-gradient(135deg, var(--color-accent), #a8893e);
+          background: linear-gradient(135deg, var(--color-accent), #9A0C22);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -247,7 +247,7 @@ export default function Navbar() {
         }
         .navbar__avatar:hover {
           border-color: var(--color-accent);
-          box-shadow: 0 0 16px rgba(201,168,76,0.4);
+          box-shadow: 0 0 16px rgba(200, 16, 46,0.4);
           transform: scale(1.1);
         }
       `}</style>

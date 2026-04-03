@@ -186,8 +186,8 @@ export default function Membership() {
           text-align: center;
           margin-top: var(--space-2xl);
           padding: var(--space-lg) var(--space-xl);
-          background: rgba(201, 168, 76, 0.05);
-          border: 1px solid rgba(201, 168, 76, 0.15);
+          background: rgba(200, 16, 46, 0.05);
+          border: 1px solid rgba(200, 16, 46, 0.15);
           border-radius: var(--radius-md);
           color: var(--color-text-secondary);
           font-size: var(--fs-sm);
@@ -221,7 +221,7 @@ export default function Membership() {
           font-weight: var(--fw-medium);
         }
         .comparison-table__popular {
-          background: rgba(201, 168, 76, 0.05) !important;
+          background: rgba(200, 16, 46, 0.05) !important;
           color: var(--color-accent);
         }
         .comparison-table td {

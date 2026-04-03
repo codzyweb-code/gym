@@ -12,7 +12,7 @@ const posts = {
     author: 'Vikram Rathore',
     date: 'Mar 28, 2026',
     readTime: '5 min read',
-    color: '#C9A84C',
+    color: '#C8102E',
     content: `
       <p>Starting your fitness journey can feel overwhelming with so many exercises to choose from. But the truth is, you only need a handful of compound movements to build a rock-solid foundation.</p>
       <h3>1. Squats</h3>
@@ -44,7 +44,7 @@ const posts = {
     author: 'Neha Gupta',
     date: 'Mar 15, 2026',
     readTime: '10 min read',
-    color: '#a8893e',
+    color: '#9A0C22',
     content: `<p>Building muscle requires more than just lifting weights — your nutrition is equally important. Aim for 1.6-2.2g of protein per kg of bodyweight, eat in a slight caloric surplus, and time your meals around your workouts for optimal results.</p><h3>Key Takeaways</h3><p>Protein is king, but don't neglect carbs and fats. They fuel your workouts and support hormone production. Stay consistent and track your intake.</p>`,
   },
 }

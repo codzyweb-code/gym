@@ -25,8 +25,8 @@ export default function BMICalculator() {
 
   const getCategory = (bmi) => {
     if (bmi < 18.5) return { label: 'Underweight', color: '#888888', advice: 'Focus on calorie surplus and strength training.' }
-    if (bmi < 25) return { label: 'Normal', color: '#C9A84C', advice: 'Great shape! Maintain with regular exercise.' }
-    if (bmi < 30) return { label: 'Overweight', color: '#a8893e', advice: 'Add cardio and adjust your diet for results.' }
+    if (bmi < 25) return { label: 'Normal', color: '#C8102E', advice: 'Great shape! Maintain with regular exercise.' }
+    if (bmi < 30) return { label: 'Overweight', color: '#9A0C22', advice: 'Add cardio and adjust your diet for results.' }
     return { label: 'Obese', color: '#7a6b30', advice: 'Consult a trainer for a personalized fitness plan.' }
   }
 
@@ -161,7 +161,7 @@ export default function BMICalculator() {
         .bmi-calculator__scale-bar {
           height: 8px;
           border-radius: var(--radius-full);
-          background: linear-gradient(90deg, #888888 0%, #C9A84C 30%, #a8893e 60%, #7a6b30 100%);
+          background: linear-gradient(90deg, #888888 0%, #C8102E 30%, #9A0C22 60%, #7a6b30 100%);
           position: relative;
         }
         .bmi-calculator__scale-marker {

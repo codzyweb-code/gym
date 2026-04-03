@@ -10,8 +10,8 @@ export default function TestimonialCard({ name, role, text, rating = 5, image })
           <Star
             key={i}
             size={16}
-            fill={i < rating ? '#C9A84C' : 'transparent'}
-            color={i < rating ? '#C9A84C' : '#444'}
+            fill={i < rating ? '#C8102E' : 'transparent'}
+            color={i < rating ? '#C8102E' : '#444'}
           />
         ))}
       </div>

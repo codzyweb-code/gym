@@ -250,8 +250,8 @@ export default function Home() {
           position: absolute;
           inset: 0;
           background: 
-            radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.15) 0%, transparent 50%),
-            radial-gradient(ellipse at 80% 20%, rgba(201, 168, 76, 0.1) 0%, transparent 50%),
+            radial-gradient(ellipse at 20% 50%, rgba(200, 16, 46, 0.15) 0%, transparent 50%),
+            radial-gradient(ellipse at 80% 20%, rgba(200, 16, 46, 0.1) 0%, transparent 50%),
             linear-gradient(180deg, var(--color-bg-primary) 0%, rgba(10,10,10,0.95) 100%);
         }
         .hero__pattern {
@@ -336,9 +336,9 @@ export default function Home() {
           align-items: center;
           justify-content: center;
           border-radius: var(--radius-md);
-          background: rgba(201, 168, 76, 0.1);
+          background: rgba(200, 16, 46, 0.1);
           color: var(--color-accent);
-          border: 1px solid rgba(201, 168, 76, 0.2);
+          border: 1px solid rgba(200, 16, 46, 0.2);
         }
         .program-card__title {
           font-size: var(--fs-xl);
@@ -418,7 +418,7 @@ export default function Home() {
           right: 0;
           width: 65%;
           height: 60%;
-          background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, var(--color-bg-tertiary) 100%);
+          background: linear-gradient(135deg, rgba(200, 16, 46,0.1) 0%, var(--color-bg-tertiary) 100%);
           z-index: 2;
         }
         .about-preview__accent-box {
@@ -467,8 +467,8 @@ export default function Home() {
         .cta-box {
           text-align: center;
           padding: var(--space-4xl);
-          background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(201,168,76,0.05) 100%);
-          border: 1px solid rgba(201, 168, 76, 0.2);
+          background: linear-gradient(135deg, rgba(200, 16, 46,0.08) 0%, rgba(200, 16, 46,0.05) 100%);
+          border: 1px solid rgba(200, 16, 46, 0.2);
           border-radius: var(--radius-xl);
           position: relative;
           overflow: hidden;
@@ -480,7 +480,7 @@ export default function Home() {
           left: -50%;
           width: 200%;
           height: 200%;
-          background: radial-gradient(ellipse at center, rgba(201,168,76,0.05) 0%, transparent 60%);
+          background: radial-gradient(ellipse at center, rgba(200, 16, 46,0.05) 0%, transparent 60%);
           animation: spin 20s linear infinite;
           pointer-events: none;
         }

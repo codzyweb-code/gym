@@ -49,8 +49,8 @@ export default function PricingCard({ name, price, period, features, popular = f
         }
         .pricing-card--popular {
           border-color: var(--color-accent);
-          background: linear-gradient(180deg, rgba(201,168,76,0.05) 0%, var(--color-bg-card) 40%);
-          box-shadow: 0 0 40px rgba(201,168,76,0.1);
+          background: linear-gradient(180deg, rgba(200, 16, 46,0.05) 0%, var(--color-bg-card) 40%);
+          box-shadow: 0 0 40px rgba(200, 16, 46,0.1);
           transform: scale(1.03);
         }
         .pricing-card--popular:hover {

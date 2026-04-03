@@ -138,9 +138,9 @@ export default function Services() {
           align-items: center;
           justify-content: center;
           border-radius: var(--radius-lg);
-          background: rgba(201, 168, 76, 0.1);
+          background: rgba(200, 16, 46, 0.1);
           color: var(--color-accent);
-          border: 1px solid rgba(201, 168, 76, 0.2);
+          border: 1px solid rgba(200, 16, 46, 0.2);
           transition: all var(--transition-base);
         }
         .service-card:hover .service-card__icon {

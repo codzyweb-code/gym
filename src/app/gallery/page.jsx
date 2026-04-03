@@ -8,17 +8,17 @@ const categories = ['All', 'Gym Floor', 'Classes', 'Equipment', 'Community', 'Ev
 
 const galleryItems = [
   { src: null, alt: 'Main gym floor with premium equipment', category: 'Gym Floor', color: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)' },
-  { src: null, alt: 'HIIT class in action', category: 'Classes', color: 'linear-gradient(135deg, #C9A84C 0%, #a8893e 100%)' },
+  { src: null, alt: 'HIIT class in action', category: 'Classes', color: 'linear-gradient(135deg, #C8102E 0%, #9A0C22 100%)' },
   { src: null, alt: 'Hammer Strength equipment rack', category: 'Equipment', color: 'linear-gradient(135deg, #222222 0%, #333333 100%)' },
   { src: null, alt: 'Group yoga session', category: 'Classes', color: 'linear-gradient(135deg, #3a3a3a 0%, #1a1a1a 100%)' },
-  { src: null, alt: 'Members celebrating together', category: 'Community', color: 'linear-gradient(135deg, #a8893e 0%, #7a6b30 100%)' },
+  { src: null, alt: 'Members celebrating together', category: 'Community', color: 'linear-gradient(135deg, #9A0C22 0%, #7a6b30 100%)' },
   { src: null, alt: 'Free weights zone', category: 'Gym Floor', color: 'linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%)' },
   { src: null, alt: 'Boxing ring area', category: 'Equipment', color: 'linear-gradient(135deg, #404040 0%, #1a1a1a 100%)' },
-  { src: null, alt: 'Spin class studio', category: 'Classes', color: 'linear-gradient(135deg, #d4b85e 0%, #a8893e 100%)' },
+  { src: null, alt: 'Spin class studio', category: 'Classes', color: 'linear-gradient(135deg, #DF1638 0%, #9A0C22 100%)' },
   { src: null, alt: 'Annual fitness competition', category: 'Events', color: 'linear-gradient(135deg, #333333 0%, #111111 100%)' },
-  { src: null, alt: 'Cardio zone with treadmills', category: 'Gym Floor', color: 'linear-gradient(135deg, #C9A84C 0%, #333333 100%)' },
+  { src: null, alt: 'Cardio zone with treadmills', category: 'Gym Floor', color: 'linear-gradient(135deg, #C8102E 0%, #333333 100%)' },
   { src: null, alt: 'Team workout session', category: 'Community', color: 'linear-gradient(135deg, #2a2a2a 0%, #181818 100%)' },
-  { src: null, alt: 'CrossFit competition event', category: 'Events', color: 'linear-gradient(135deg, #a8893e 0%, #222222 100%)' },
+  { src: null, alt: 'CrossFit competition event', category: 'Events', color: 'linear-gradient(135deg, #9A0C22 0%, #222222 100%)' },
 ]
 
 export default function Gallery() {

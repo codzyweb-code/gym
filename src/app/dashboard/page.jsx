@@ -145,8 +145,8 @@ export default function Dashboard() {
             height: 80px;
             margin: 0 auto var(--space-xl);
             border-radius: 50%;
-            background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
-            border: 2px solid rgba(201,168,76,0.2);
+            background: linear-gradient(135deg, rgba(200, 16, 46,0.15), rgba(200, 16, 46,0.05));
+            border: 2px solid rgba(200, 16, 46,0.2);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -154,8 +154,8 @@ export default function Dashboard() {
             animation: pulse-glow 3s ease-in-out infinite;
           }
           @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.2); }
-            50% { box-shadow: 0 0 30px 5px rgba(201,168,76,0.15); }
+            0%, 100% { box-shadow: 0 0 0 0 rgba(200, 16, 46,0.2); }
+            50% { box-shadow: 0 0 30px 5px rgba(200, 16, 46,0.15); }
           }
           .no-membership-title {
             font-size: var(--fs-2xl);
@@ -171,8 +171,8 @@ export default function Dashboard() {
             margin-right: auto;
           }
           .no-membership-quote {
-            background: rgba(201,168,76,0.06);
-            border: 1px solid rgba(201,168,76,0.15);
+            background: rgba(200, 16, 46,0.06);
+            border: 1px solid rgba(200, 16, 46,0.15);
             border-radius: var(--radius-md);
             padding: var(--space-lg) var(--space-xl);
             margin-bottom: var(--space-xl);
@@ -236,9 +236,9 @@ export default function Dashboard() {
 
   // ---------- MEMBER VIEW (HAS MEMBERSHIP) ----------
   const statCards = [
-    { icon: <Dumbbell size={24} />, label: 'Visits This Month', value: stats.visitsThisMonth, color: '#C9A84C' },
-    { icon: <Hash size={24} />, label: 'Total Visits', value: stats.totalVisits, color: '#d4b85e' },
-    { icon: <TrendingUp size={24} />, label: 'Current Streak', value: `${stats.streak} day${stats.streak !== 1 ? 's' : ''}`, color: '#e8d5a3' },
+    { icon: <Dumbbell size={24} />, label: 'Visits This Month', value: stats.visitsThisMonth, color: '#C8102E' },
+    { icon: <Hash size={24} />, label: 'Total Visits', value: stats.totalVisits, color: '#DF1638' },
+    { icon: <TrendingUp size={24} />, label: 'Current Streak', value: `${stats.streak} day${stats.streak !== 1 ? 's' : ''}`, color: '#E32943' },
   ]
 
   return (
@@ -404,8 +404,8 @@ const dashboardStyles = `
     align-items: center;
     padding: var(--space-lg) var(--space-xl);
     margin-bottom: var(--space-xl);
-    background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, var(--color-bg-card) 100%);
-    border-color: rgba(201,168,76,0.2);
+    background: linear-gradient(135deg, rgba(200, 16, 46,0.08) 0%, var(--color-bg-card) 100%);
+    border-color: rgba(200, 16, 46,0.2);
     flex-wrap: wrap;
     gap: var(--space-md);
   }
