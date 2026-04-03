@@ -59,9 +59,9 @@ const faqs = [
   { q: 'What are the gym timings?', a: 'We\'re open Monday to Friday from 5:00 AM to 11:00 PM, and Saturday-Sunday from 6:00 AM to 10:00 PM. That\'s 18 hours of daily access!' },
   { q: 'Do you offer a free trial?', a: 'Absolutely! We offer a complimentary 3-day trial for all new visitors. Just walk in with a valid ID and experience everything S4 FITNESS has to offer.' },
   { q: 'Can I switch plans later?', a: 'Yes, you can upgrade or downgrade your plan at any time. The price difference will be prorated for the remaining days in your billing cycle.' },
-  { q: 'Is personal training included?', a: 'Personal training is included in the Elite plan (8 sessions/month). For Starter and Pro plans, PT sessions can be added at ₹800 per session.' },
-  { q: 'Do you have parking?', a: 'Yes, we have free parking for all members. Our facility in Connaught Place has both two-wheeler and four-wheeler parking spaces.' },
-  { q: 'What about cancellation?', a: 'You can cancel your membership at any time with 15 days\' notice. No cancellation fees, no questions asked. We keep things simple.' },
+  { q: 'Is personal training included in the membership?', a: 'Starter and Pro plans include a free initial fitness assessment. Full 1-on-1 personal training packages are purchased separately. Elite members receive one free session monthly.' },
+  { q: 'Do you have parking?', a: 'Yes, we have free parking for all members. Our facility in Sulthan Bathery has both two-wheeler and four-wheeler parking spaces.' },
+  { q: 'Can I freeze my membership if I travel?', a: 'Yes! Pro members can freeze their membership for up to 14 days per year, and Elite members get up to 30 days of freeze time.' },
 ]
 
 export default function Membership() {

@@ -12,12 +12,10 @@ const values = [
 ]
 
 const milestones = [
-  { year: '2014', title: 'The Beginning', desc: 'Started as a small 2,000 sq ft studio in South Delhi with just 3 trainers and a dream.' },
-  { year: '2016', title: 'First Expansion', desc: 'Grew to 8,000 sq ft with new strength and cardio zones. Membership crossed 200.' },
-  { year: '2018', title: 'Group Classes Launch', desc: 'Introduced HIIT, Yoga, and CrossFit classes. Hired 10+ certified trainers.' },
-  { year: '2020', title: 'Digital Transformation', desc: 'Launched online training and virtual classes during the pandemic. Kept the community strong.' },
-  { year: '2022', title: 'Premium Upgrade', desc: 'Relocated to our flagship 15,000 sq ft facility in Connaught Place with world-class equipment.' },
-  { year: '2024', title: 'Community of 500+', desc: 'Crossed 500 active members, 15+ trainers, and earned "Best Gym in New Delhi" recognition.' },
+  { year: '2023', title: 'The Beginning', desc: 'Started in Sulthan Bathery with a mission to bring premium fitness equipment to Wayanad.' },
+  { year: '2024', title: 'Expanding Facilities', desc: 'Added advanced functional training zones and specialized group classes based on member feedback.' },
+  { year: '2025', title: 'Growing Strong', desc: 'Hit our 500 member milestone and expanded our coaching staff with certified nutritionists.' },
+  { year: '2026', title: 'The Future', desc: 'Continuing to bring the best workout experience and community events to Sulthan Bathery.' },
 ]
 
 const allTrainers = [
@@ -49,11 +47,11 @@ export default function About() {
           <div className="about-split">
             <ScrollReveal direction="left" className="about-split__content">
               <span className="badge">Our Story</span>
-              <h2>Forged From <span className="text-accent">Passion</span></h2>
+              <h2>THE <span className="text-accent">S4 FITNESS</span> JOURNEY</h2>
               <div className="divider" />
-              <p>S4 FITNESS was born from a simple belief: everyone deserves access to world-class fitness. What started as a humble 2,000 sq ft studio in South Delhi with just three trainers and a handful of dumbbells has grown into New Delhi's most prestigious fitness destination.</p>
-              <p>Our founder, a former national-level athlete, saw the gap between mediocre gyms and truly transformative fitness experiences. S4 FITNESS was created to bridge that gap — combining elite training methodologies with a welcoming, community-driven atmosphere.</p>
-              <p>Today, our flagship 15,000 sq ft facility in Connaught Place houses over 200 pieces of equipment from brands like Hammer Strength, Rogue, and Technogym. But our greatest asset isn't our equipment — it's the passionate community of 500+ members who walk through our doors every day, committed to becoming their best selves.</p>
+              <p>S4 FITNESS was started in 2023 with a very clear purpose: to give the people of Sulthan Bathery a proper, premium gym experience without having to travel to a big city.</p>
+              <br />
+              <p>Today, our facility houses the best equipment, heavy free weights, and dedicated cardio zones. But what really makes us different is our community of serious lifters and regular people who just want to stay fit.</p>
             </ScrollReveal>
             <ScrollReveal direction="right" className="about-split__visual">
               <div className="about-split__image" />
@@ -127,7 +125,7 @@ export default function About() {
           <SectionHeader
             badge="Our Team"
             title={<>Expert <span className="text-accent">Trainers</span></>}
-            subtitle="Meet the certified professionals who make S4 FITNESS the best gym in New Delhi."
+            subtitle="Meet the certified professionals leading the floor at S4 FITNESS."
           />
           <div className="grid grid--4">
             {allTrainers.map((trainer, i) => (
@@ -145,7 +143,7 @@ export default function About() {
           <SectionHeader
             badge="Why S4 FITNESS"
             title={<>Why Choose <span className="text-accent">Us</span></>}
-            subtitle="Here's what sets S4 FITNESS apart from every other gym in New Delhi."
+            subtitle="Here's what sets S4 FITNESS apart from standard commercial gyms."
           />
           <div className="why-grid">
             {[

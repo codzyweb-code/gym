@@ -18,7 +18,7 @@ const programs = [
 const testimonials = [
   { name: 'Arjun Mehta', role: 'Member for 2 years', text: 'S4 FITNESS completely transformed my fitness journey. The trainers are incredibly knowledgeable, and the community keeps me coming back every single day. Lost 20kg in 8 months!', rating: 5 },
   { name: 'Priya Sharma', role: 'Member for 1 year', text: 'The HIIT classes are absolutely incredible. I\'ve never felt more energized and strong. The atmosphere here is electrifying — it pushes you to give your best every session.', rating: 5 },
-  { name: 'Rahul Singh', role: 'Member for 3 years', text: 'Best gym in New Delhi, hands down. The equipment is top-tier, always maintained, and the personal training program helped me achieve gains I never thought possible.', rating: 5 },
+  { name: 'Rahul S.', role: 'Member', text: 'Best gym in Sulthan Bathery, without a doubt. The equipment is top-tier, always maintained, and the trainers actually care about your progress.', rating: 5 },
 ]
 
 const trainers = [
@@ -39,7 +39,7 @@ export default function Home() {
         </div>
         <div className="container hero__content">
           <ScrollReveal>
-            <span className="badge" style={{ marginBottom: 'var(--space-lg)' }}>🔥 New Delhi's #1 Premium Gym</span>
+            <span className="badge" style={{ marginBottom: 'var(--space-lg)' }}>🔥 Sulthan Bathery's #1 Gym</span>
           </ScrollReveal>
           <ScrollReveal delay={100}>
             <h1 className="hero__title">
@@ -117,7 +117,7 @@ export default function Home() {
               <span className="badge">About S4 FITNESS</span>
               <h2>More Than a Gym.<br /><span className="text-accent">A Movement.</span></h2>
               <div className="divider" />
-              <p>Founded in 2014, S4 FITNESS has grown from a local fitness studio into New Delhi's most sought-after gym destination. We believe fitness isn't just about lifting weights — it's about building discipline, forging resilience, and transforming lives.</p>
+              <p>Started in 2023, S4 FITNESS was built with one goal: to bring a truly world-class fitness facility to Sulthan Bathery. We focus on real results through heavy lifting, properly structured programs, and quality coaching.</p>
               <p>Our 15,000 sq. ft. facility houses the latest equipment from Hammer Strength, Rogue, and Technogym — providing an unmatched training experience.</p>
               <div className="about-preview__features">
                 <div className="about-preview__feature">

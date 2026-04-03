@@ -40,8 +40,8 @@ export default function Footer() {
               <span>S4 <span className="text-accent">FITNESS</span></span>
             </Link>
             <p className="footer__desc">
-              New Delhi's premier fitness destination. Transform your body with world-class trainers,
-              cutting-edge equipment, and a community that pushes you to greatness.
+              Sulthan Bathery's leading fitness center. Join our community and achieve real results with expert coaching,
+              high-quality equipment, and a welcoming environment.
             </p>
             <div className="footer__socials">
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="footer__social"><InstagramIcon size={20} /></a>
@@ -64,11 +64,11 @@ export default function Footer() {
             <h4 className="footer__heading">Contact Info</h4>
             <div className="footer__contact-item">
               <MapPin size={16} className="text-accent" />
-              <span>123 Fitness Avenue, Connaught Place, New Delhi - 110001</span>
+              <span>Main Road, Sulthan Bathery, Kerala - 673592</span>
             </div>
             <div className="footer__contact-item">
               <Phone size={16} className="text-accent" />
-              <span>+91 98765 43210</span>
+              <span>+91 98476 58992</span>
             </div>
             <div className="footer__contact-item">
               <Mail size={16} className="text-accent" />

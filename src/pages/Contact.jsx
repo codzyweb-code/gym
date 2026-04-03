@@ -48,14 +48,16 @@ export default function Contact() {
                     <div className="contact-item__icon"><MapPin size={22} /></div>
                     <div>
                       <h4>Visit Us</h4>
-                      <p>123 Fitness Avenue, Connaught Place,<br />New Delhi - 110001</p>
+                      <div className="contact-info__details">
+                      <p>Main Road, Sulthan Bathery,<br />Kerala - 673592</p>
+                    </div>
                     </div>
                   </div>
-                  <div className="contact-item">
-                    <div className="contact-item__icon"><Phone size={22} /></div>
-                    <div>
+                  <div className="contact-info__item">
+                    <div className="contact-info__icon"><Phone className="icon" size={22} /></div>
+                    <div className="contact-info__details">
                       <h4>Call Us</h4>
-                      <p>+91 98765 43210<br />+91 11 4567 8900</p>
+                      <p>+91 98476 58992</p>
                     </div>
                   </div>
                   <div className="contact-item">
@@ -112,9 +114,9 @@ export default function Contact() {
                       </div>
                     </div>
                     <div className="contact-form__row">
-                      <div className="contact-form__field">
-                        <label htmlFor="contact-phone">Phone</label>
-                        <input type="tel" id="contact-phone" name="phone" value={form.phone} onChange={handleChange} placeholder="+91 98765 43210" />
+                      <div className="form-group">
+                        <label htmlFor="contact-phone">Phone Number</label>
+                        <input type="tel" id="contact-phone" name="phone" value={form.phone} onChange={handleChange} placeholder="+91 98476 58992" />
                       </div>
                       <div className="contact-form__field">
                         <label htmlFor="contact-subject">Subject</label>
@@ -144,17 +146,17 @@ export default function Contact() {
       </section>
 
       {/* MAP */}
-      <section className="section section--dark" id="map-section">
-        <div className="container">
-          <SectionHeader
-            badge="Find Us"
-            title={<>Visit <span className="text-accent">S4 FITNESS</span></>}
-            subtitle="Located in the heart of Connaught Place, New Delhi — easy to reach from anywhere in the city."
-          />
+      <section className="section bg-dark" id="map-section">
+        <SectionHeader
+          badge="Visit Us"
+          title={<>Find <span className="text-accent">Our Gym</span></>}
+          subtitle="Located in the heart of Sulthan Bathery — easy to reach from anywhere in town."
+        />
+        <div className="container" style={{ marginTop: 'var(--space-2xl)' }}>
           <ScrollReveal>
             <div className="map-container">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.735741738653!2d77.21727687527894!3d28.632694675659706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd37b741d057%3A0xcdee88e47393c2d1!2sConnaught%20Place%2C%20New%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1711234567890!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31295.432657471243!2d76.24151743603417!3d11.6661339845341!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba60be1bbedc165%3A0xe5f92270add882e5!2sSultan%20Bathery%2C%20Kerala!5e0!3m2!1sen!2sin!4v1712121345678!5m2!1sen!2sin"
                 width="100%"
                 height="450"
                 style={{ border: 0, borderRadius: 'var(--radius-lg)' }}
