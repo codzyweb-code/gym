@@ -26,6 +26,15 @@ app.use('/api/admin', adminRoutes)
 // Health check
 app.get('/api/health', (req, res) => res.json({ status: 'ok', time: new Date().toISOString() }))
 
+// Serve frontend in production
+if (process.env.NODE_ENV === 'production') {
+  const distPath = path.join(__dirname, '../dist')
+  app.use(express.static(distPath))
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(distPath, 'index.html'))
+  })
+}
+
 app.listen(PORT, () => {
   console.log(`🚀 S4 Fitness API running on http://localhost:${PORT}`)
   console.log(`📁 Using local JSON database at server/database.json`)
