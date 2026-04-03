@@ -30,7 +30,8 @@ app.get('/api/health', (req, res) => res.json({ status: 'ok', time: new Date().t
 if (process.env.NODE_ENV === 'production') {
   const distPath = path.join(__dirname, '../dist')
   app.use(express.static(distPath))
-  app.get('*', (req, res) => {
+  // Express 5.x catch-all fix
+  app.use((req, res) => {
     res.sendFile(path.join(distPath, 'index.html'))
   })
 }
