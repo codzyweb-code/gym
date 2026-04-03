@@ -19,10 +19,10 @@ const milestones = [
 ]
 
 const allTrainers = [
-  { name: 'Vikram Rathore', role: 'Head Trainer', specialization: 'Strength & Conditioning, Powerlifting', experience: 12, instagram: '#' },
-  { name: 'Ananya Patel', role: 'Yoga Instructor', specialization: 'Hatha Yoga, Meditation, Flexibility', experience: 8, instagram: '#' },
-  { name: 'Karan Malhotra', role: 'HIIT Specialist', specialization: 'Fat Loss, HIIT, Functional Training', experience: 10, instagram: '#' },
-  { name: 'Neha Gupta', role: 'Nutritionist', specialization: 'Sports Nutrition, Meal Planning', experience: 7, instagram: '#' },
+  { name: 'Sanal', role: 'Head Trainer', specialization: 'Strength & Conditioning, Powerlifting', experience: 8, instagram: '#' },
+  { name: 'Bibin', role: 'Functional Coach', specialization: 'Crossfit, Mobility', experience: 6, instagram: '#' },
+  { name: 'Shyam', role: 'HIIT Specialist', specialization: 'Fat Loss, HIIT, Functional Training', experience: 5, instagram: '#' },
+  { name: 'Arjun', role: 'Nutritionist', specialization: 'Sports Nutrition, Meal Planning', experience: 4, instagram: '#' },
   { name: 'Rohit Verma', role: 'CrossFit Coach', specialization: 'CrossFit, Olympic Lifting', experience: 9, instagram: '#' },
   { name: 'Simran Kaur', role: 'Group Fitness', specialization: 'Zumba, Aerobics, Dance Fitness', experience: 6, instagram: '#' },
   { name: 'Amit Saxena', role: 'Boxing Trainer', specialization: 'Boxing, MMA, Self-Defense', experience: 11, instagram: '#' },

@@ -22,10 +22,10 @@ const testimonials = [
 ]
 
 const trainers = [
-  { name: 'Vikram Rathore', role: 'Head Trainer', specialization: 'Strength & Conditioning', experience: 12, instagram: '#' },
-  { name: 'Ananya Patel', role: 'Yoga Instructor', specialization: 'Yoga & Mindfulness', experience: 8, instagram: '#' },
-  { name: 'Karan Malhotra', role: 'HIIT Specialist', specialization: 'Fat Loss & HIIT', experience: 10, instagram: '#' },
-  { name: 'Neha Gupta', role: 'Nutritionist', specialization: 'Sports Nutrition', experience: 7, instagram: '#' },
+  { name: 'Sanal', role: 'Head Trainer', specialization: 'Strength & Conditioning', experience: 8, instagram: '#' },
+  { name: 'Bibin', role: 'Functional Training', specialization: 'CrossFit & Mobility', experience: 6, instagram: '#' },
+  { name: 'Shyam', role: 'HIIT Specialist', specialization: 'Fat Loss & HIIT', experience: 5, instagram: '#' },
+  { name: 'Arjun', role: 'Nutritionist', specialization: 'Sports Nutrition', experience: 4, instagram: '#' },
 ]
 
 export default function Home() {
@@ -162,7 +162,7 @@ export default function Home() {
             <AnimatedCounter end={500} suffix="+" label="Active Members" />
             <AnimatedCounter end={15} suffix="+" label="Expert Trainers" />
             <AnimatedCounter end={50} suffix="+" label="Weekly Classes" />
-            <AnimatedCounter end={10} suffix="+" label="Years Experience" />
+            <AnimatedCounter end={3} suffix="+" label="Years Experience" />
           </div>
         </div>
       </section>
