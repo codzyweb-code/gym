@@ -1,5 +1,8 @@
+"use client";
+
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X, Dumbbell } from 'lucide-react'
 
 const navLinks = [
@@ -16,12 +19,12 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [user, setUser] = useState(null)
-  const location = useLocation()
+  const location = usePathname()
 
   // Check auth on mount and route change
   useEffect(() => {
     try {
-      const stored = localStorage.getItem('s4fitness_user')
+      const stored = (typeof window !== "undefined" ? localStorage : {getItem:()=>null, setItem:()=>{}, removeItem:()=>{}}).getItem('s4fitness_user')
       setUser(stored ? JSON.parse(stored) : null)
     } catch { setUser(null) }
   }, [location])
@@ -44,7 +47,7 @@ export default function Navbar() {
   return (
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="container navbar__inner">
-        <Link to="/" className="navbar__logo" id="nav-logo">
+        <Link href="/" className="navbar__logo" id="nav-logo">
           <Dumbbell size={28} className="navbar__logo-icon" />
           <span>S4 <span className="text-accent">FITNESS</span></span>
         </Link>
@@ -53,7 +56,7 @@ export default function Navbar() {
           {navLinks.map(link => (
             <Link
               key={link.path}
-              to={link.path}
+              href={link.path}
               className={`navbar__link ${location.pathname === link.path ? 'navbar__link--active' : ''}`}
               id={`nav-${link.label.toLowerCase()}`}
             >
@@ -62,13 +65,13 @@ export default function Navbar() {
           ))}
           <div className="navbar__links-cta">
             {user ? (
-              <Link to={user.role === 'admin' ? '/admin' : '/dashboard'} className="navbar__avatar" id="nav-avatar-mobile">
+              <Link href={user.role === 'admin' ? '/admin' : '/dashboard'} className="navbar__avatar" id="nav-avatar-mobile">
                 {user.name?.charAt(0).toUpperCase() || 'U'}
               </Link>
             ) : (
               <>
-                <Link to="/login" className="navbar__link" id="nav-login">Login</Link>
-                <Link to="/membership" className="btn btn--primary btn--small" id="nav-join">Join Now</Link>
+                <Link href="/login" className="navbar__link" id="nav-login">Login</Link>
+                <Link href="/membership" className="btn btn--primary btn--small" id="nav-join">Join Now</Link>
               </>
             )}
           </div>
@@ -76,13 +79,13 @@ export default function Navbar() {
 
         <div className="navbar__actions">
           {user ? (
-            <Link to={user.role === 'admin' ? '/admin' : '/dashboard'} className="navbar__avatar" id="nav-avatar" title={user.name}>
+            <Link href={user.role === 'admin' ? '/admin' : '/dashboard'} className="navbar__avatar" id="nav-avatar" title={user.name}>
               {user.name?.charAt(0).toUpperCase() || 'U'}
             </Link>
           ) : (
             <>
-              <Link to="/login" className="navbar__link navbar__login-desktop" id="nav-login-desktop">Login</Link>
-              <Link to="/membership" className="btn btn--primary btn--small navbar__cta-desktop" id="nav-join-desktop">
+              <Link href="/login" className="navbar__link navbar__login-desktop" id="nav-login-desktop">Login</Link>
+              <Link href="/membership" className="btn btn--primary btn--small navbar__cta-desktop" id="nav-join-desktop">
                 Join Now
               </Link>
             </>

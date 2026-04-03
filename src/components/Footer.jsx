@@ -1,4 +1,7 @@
-import { Link } from 'react-router-dom'
+"use client";
+
+import Link from 'next/link';
+
 import { Dumbbell, Mail, Phone, MapPin, ArrowUp } from 'lucide-react'
 import { useState } from 'react'
 
@@ -35,7 +38,7 @@ export default function Footer() {
       <div className="container">
         <div className="footer__grid">
           <div className="footer__brand">
-            <Link to="/" className="footer__logo">
+            <Link href="/" className="footer__logo">
               <Dumbbell size={24} />
               <span>S4 <span className="text-accent">FITNESS</span></span>
             </Link>
@@ -53,11 +56,11 @@ export default function Footer() {
 
           <div className="footer__col">
             <h4 className="footer__heading">Quick Links</h4>
-            <Link to="/about" className="footer__link">About Us</Link>
-            <Link to="/services" className="footer__link">Programs</Link>
-            <Link to="/membership" className="footer__link">Pricing</Link>
-            <Link to="/gallery" className="footer__link">Gallery</Link>
-            <Link to="/blog" className="footer__link">Blog</Link>
+            <Link href="/about" className="footer__link">About Us</Link>
+            <Link href="/services" className="footer__link">Programs</Link>
+            <Link href="/membership" className="footer__link">Pricing</Link>
+            <Link href="/gallery" className="footer__link">Gallery</Link>
+            <Link href="/blog" className="footer__link">Blog</Link>
           </div>
 
           <div className="footer__col">

@@ -1,5 +1,8 @@
+"use client";
+
 import { Check, ArrowRight, Zap } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link';
+
 
 export default function PricingCard({ name, price, period, features, popular = false, description }) {
   return (
