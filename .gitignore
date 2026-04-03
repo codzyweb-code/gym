@@ -30,3 +30,6 @@ server/database.json
 .env.local
 .env.production
 .env.development
+
+.next
+
