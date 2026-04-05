@@ -17,11 +17,11 @@ router.post('/register', async (req, res) => {
       return res.status(400).json({ error: 'Name, email, and password are required.' })
     }
 
-    const exists = db.findUserByEmail(email)
+    const exists = await db.findUserByEmail(email)
     if (exists) return res.status(400).json({ error: 'Email already registered.' })
 
     const hashed = await bcrypt.hash(password, 12)
-    const user = db.createUser({ name, email, password: hashed, phone })
+    const user = await db.createUser({ name, email, password: hashed, phone })
     const token = signToken(user._id)
 
     res.status(201).json({
@@ -42,7 +42,7 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ error: 'Email and password are required.' })
     }
 
-    const user = db.findUserByEmail(email)
+    const user = await db.findUserByEmail(email)
     if (!user) return res.status(400).json({ error: 'Invalid email or password.' })
 
     const isMatch = await bcrypt.compare(password, user.password)

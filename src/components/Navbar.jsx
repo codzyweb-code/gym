@@ -45,212 +45,316 @@ export default function Navbar() {
   }, [isOpen])
 
   return (
-    <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
-      <div className="container navbar__inner">
-        <Link href="/" className="navbar__logo" id="nav-logo">
-          <Dumbbell size={28} className="navbar__logo-icon" />
-          <span>S4 <span className="text-accent">FITNESS</span></span>
-        </Link>
-
-        <div className={`navbar__links ${isOpen ? 'navbar__links--open' : ''}`}>
+    <>
+      {/* 
+        IRON-CLAD FULLSCREEN OVERLAY 
+        Moved outside the <nav> to break free from 'containment traps'
+      */}
+      <div className={`navbar-mobile-overlay ${isOpen ? 'active' : ''}`}>
+        <button 
+          className="navbar-mobile-close" 
+          onClick={() => setIsOpen(false)}
+          aria-label="Close menu"
+        >
+          <X size={32} />
+        </button>
+        <div className="navbar-mobile-content">
           {navLinks.map(link => (
             <Link
               key={link.path}
               href={link.path}
-              className={`navbar__link ${location.pathname === link.path ? 'navbar__link--active' : ''}`}
-              id={`nav-${link.label.toLowerCase()}`}
+              className={`navbar-mobile-link ${location === link.path ? 'active' : ''}`}
+              onClick={() => setIsOpen(false)}
             >
               {link.label}
             </Link>
           ))}
-          <div className="navbar__links-cta">
+          <div className="navbar-mobile-footer">
             {user ? (
-              <Link href={user.role === 'admin' ? '/admin' : '/dashboard'} className="navbar__avatar" id="nav-avatar-mobile">
+               <Link 
+                href={user.role === 'admin' ? '/admin' : '/dashboard'} 
+                className="navbar__avatar" 
+                onClick={() => setIsOpen(false)}
+                style={{ width: '60px', height: '60px', fontSize: '1.5rem' }}
+              >
                 {user.name?.charAt(0).toUpperCase() || 'U'}
               </Link>
             ) : (
-              <>
-                <Link href="/login" className="navbar__link" id="nav-login">Login</Link>
-                <Link href="/membership" className="btn btn--primary btn--small" id="nav-join">Join Now</Link>
-              </>
+              <Link 
+                href="/login" 
+                className="btn btn--primary btn--large" 
+                onClick={() => setIsOpen(false)}
+                style={{ width: '100%', textAlign: 'center' }}
+              >
+                Login / Register
+              </Link>
             )}
           </div>
         </div>
-
-        <div className="navbar__actions">
-          {user ? (
-            <Link href={user.role === 'admin' ? '/admin' : '/dashboard'} className="navbar__avatar" id="nav-avatar" title={user.name}>
-              {user.name?.charAt(0).toUpperCase() || 'U'}
-            </Link>
-          ) : (
-            <>
-              <Link href="/login" className="navbar__link navbar__login-desktop" id="nav-login-desktop">Login</Link>
-              <Link href="/membership" className="btn btn--primary btn--small navbar__cta-desktop" id="nav-join-desktop">
-                Join Now
-              </Link>
-            </>
-          )}
-          <button
-            className="navbar__toggle"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-            id="nav-toggle"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
       </div>
 
-      <style>{`
-        .navbar {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: var(--nav-height);
-          z-index: var(--z-sticky);
-          transition: all var(--transition-base);
-          background: transparent;
-        }
-        .navbar--scrolled {
-          background: rgba(10, 10, 10, 0.95);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border-bottom: 1px solid var(--color-border);
-          box-shadow: var(--shadow-md);
-        }
-        .navbar__inner {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          height: 100%;
-        }
-        .navbar__logo {
-          display: flex;
-          align-items: center;
-          gap: var(--space-sm);
-          font-family: var(--font-heading);
-          font-size: var(--fs-xl);
-          font-weight: var(--fw-bold);
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          z-index: var(--z-modal);
-        }
-        .navbar__logo-icon {
-          color: var(--color-accent);
-        }
-        .navbar__links {
-          display: flex;
-          align-items: center;
-          gap: var(--space-lg);
-        }
-        .navbar__link {
-          font-family: var(--font-body);
-          font-size: var(--fs-sm);
-          font-weight: var(--fw-medium);
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-          color: var(--color-text-secondary);
-          transition: color var(--transition-fast);
-          position: relative;
-        }
-        .navbar__link::after {
-          content: '';
-          position: absolute;
-          bottom: -4px;
-          left: 0;
-          width: 0;
-          height: 2px;
-          background: var(--color-accent);
-          transition: width var(--transition-base);
-        }
-        .navbar__link:hover,
-        .navbar__link--active {
-          color: var(--color-text-primary);
-        }
-        .navbar__link--active::after,
-        .navbar__link:hover::after {
-          width: 100%;
-        }
-        .navbar__actions {
-          display: flex;
-          align-items: center;
-          gap: var(--space-md);
-        }
-        .navbar__toggle {
-          display: none;
-          z-index: var(--z-modal);
-          color: var(--color-text-primary);
-        }
-        .navbar__links-cta {
-          display: none;
-        }
+      <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
+        <div className="navbar__bg"></div>
+        <div className="container navbar__inner">
+          <Link href="/" className="navbar__logo">
+            <Dumbbell size={28} className="navbar__logo-icon" />
+            <span>S4 <span className="text-accent">FITNESS</span></span>
+          </Link>
 
-        @media (max-width: 1024px) {
-          .navbar__links {
+          <div className="navbar__desktop-links">
+            {navLinks.map(link => (
+              <Link
+                key={link.path}
+                href={link.path}
+                className={`navbar__link ${location === link.path ? 'navbar__link--active' : ''}`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          <div className="navbar__actions">
+            {!user && (
+              <Link href="/login" className="navbar__link navbar__login-desktop">Login</Link>
+            )}
+            {!user && (
+              <Link href="/membership" className="btn btn--primary btn--small navbar__cta-desktop">
+                Join Now
+              </Link>
+            )}
+            {user && (
+              <Link href={user.role === 'admin' ? '/admin' : '/dashboard'} className="navbar__avatar navbar__avatar-desktop">
+                {user.name?.charAt(0).toUpperCase() || 'U'}
+              </Link>
+            )}
+            <button
+              className="navbar__toggle"
+              onClick={() => setIsOpen(true)}
+              aria-label="Open menu"
+            >
+              <Menu size={28} />
+            </button>
+          </div>
+        </div>
+
+        <style>{`
+          .navbar {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: rgba(10, 10, 10, 0.98);
+            height: var(--nav-height);
+            z-index: 1000;
+            transition: all var(--transition-base);
+            background: transparent;
+          }
+          .navbar__bg {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            transition: all var(--transition-base);
+            background: transparent;
+            pointer-events: none;
+          }
+          .navbar--scrolled .navbar__bg {
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(20px);
-            flex-direction: column;
-            justify-content: center;
-            gap: var(--space-xl);
-            transform: translateX(100%);
-            transition: transform var(--transition-slow);
-            z-index: var(--z-overlay);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--color-border);
           }
-          .navbar__links--open {
-            transform: translateX(0);
+          .navbar__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
           }
-          .navbar__link {
-            font-size: var(--fs-xl);
+          .navbar__logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
             font-family: var(--font-heading);
+            font-size: var(--fs-xl);
+            font-weight: var(--fw-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+          }
+          .navbar__logo-icon {
+            color: var(--color-accent);
+          }
+          .navbar__desktop-links {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+          }
+          .navbar__actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
           }
           .navbar__toggle {
-            display: block;
-          }
-          .navbar__login-desktop,
-          .navbar__cta-desktop {
             display: none;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
           }
-          .navbar__links-cta {
+
+          /* ULTRA-CLEAR CRYSTAL GLASSMORPHISM */
+          .navbar-mobile-overlay {
+            position: fixed;
+            inset: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            background: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.3),
+              rgba(0, 0, 0, 0.15)
+            ) !important;
+            backdrop-filter: blur(25px) !important;
+            -webkit-backdrop-filter: blur(25px) !important;
+            z-index: 9999999 !important;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            visibility: hidden;
+            -webkit-overflow-scrolling: touch;
+            border: none !important;
+            outline: none !important;
+          }
+          .navbar-mobile-overlay.active {
+            transform: translateX(0);
+            visibility: visible;
+          }
+          
+          /* Allow background page to be seen through the blur */
+          body:has(.navbar-mobile-overlay.active) {
+            overflow: hidden !important;
+          }
+
+          .navbar-mobile-close {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            color: #ffffff !important;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2) !important;
+            cursor: pointer;
+            z-index: 10000001 !important;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .navbar-mobile-content {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: var(--space-md);
-            margin-top: var(--space-lg);
+            width: 100%;
+            min-height: 100%;
+            gap: 1.25rem;
+            padding: 7rem 2rem 6rem;
+            background: transparent !important;
+          }
+          .navbar-mobile-link {
+            font-family: var(--font-heading);
+            font-size: 2.25rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #ffffff !important;
+            text-decoration: none !important;
+            letter-spacing: 0.05em;
+            width: 100%;
+            text-align: center;
+            padding: 0.75rem 0;
+            transition: all 0.3s ease;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.9);
+          }
+          .navbar-mobile-link.active {
+            color: var(--color-accent) !important;
+            text-shadow: 
+              0 0 10px rgba(200, 16, 46, 0.6),
+              0 0 20px rgba(200, 16, 46, 0.4),
+              0 0 40px rgba(200, 16, 46, 0.2);
+            animation: lunarPulse 4s ease-in-out infinite;
+          }
+          .navbar-mobile-footer {
+            margin-top: 3rem;
+            width: 100%;
+            max-width: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 6rem;
+            position: relative;
+            z-index: 10000002;
+          }
+
+          @media (max-width: 1024px) {
+            .navbar__desktop-links,
+            .navbar__login-desktop,
+            .navbar__cta-desktop,
+            .navbar__avatar-desktop {
+              display: none;
+            }
+            .navbar__toggle {
+              display: block;
+            }
+          }
+
+          .navbar__link {
+            font-family: var(--font-body);
+            font-size: var(--fs-sm);
+            font-weight: var(--fw-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--color-text-secondary);
+            transition: color var(--transition-fast);
+            position: relative;
+          }
+          .navbar__link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            transition: width var(--transition-base);
+          }
+          .navbar__link:hover,
+          .navbar__link--active {
+            color: var(--color-text-primary);
+          }
+          .navbar__link--active::after,
+          .navbar__link:hover::after {
+            width: 100%;
           }
           .navbar__avatar {
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-accent), #9A0C22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: var(--fs-md);
+            font-weight: var(--fw-bold);
+            color: #fff;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
           }
-        }
-        .navbar__avatar {
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          background: linear-gradient(135deg, var(--color-accent), #9A0C22);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-family: var(--font-heading);
-          font-size: var(--fs-md);
-          font-weight: var(--fw-bold);
-          color: #fff;
-          text-transform: uppercase;
-          transition: all var(--transition-base);
-          border: 2px solid transparent;
-          z-index: var(--z-modal);
-        }
-        .navbar__avatar:hover {
-          border-color: var(--color-accent);
-          box-shadow: 0 0 16px rgba(200, 16, 46,0.4);
-          transform: scale(1.1);
-        }
-      `}</style>
-    </nav>
+          .navbar__avatar:hover {
+             transform: scale(1.1);
+             box-shadow: 0 0 15px var(--color-accent);
+          }
+        `}</style>
+      </nav>
+    </>
   )
 }

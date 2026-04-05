@@ -99,6 +99,8 @@ export default function PricingCard({ name, price, period, features, popular = f
           font-weight: var(--fw-bold);
           color: var(--color-accent);
           margin-top: 0.5rem;
+          text-shadow: 0 0 15px rgba(200, 16, 46, 0.6);
+          animation: lunarPulse 4s ease-in-out infinite;
         }
         .pricing-card__amount {
           font-family: var(--font-heading);

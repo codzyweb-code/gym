@@ -1,126 +1,96 @@
-import fs from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
-import { randomUUID } from 'crypto'
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const DB_PATH = path.join(__dirname, 'database.json')
-
-// Initialize DB structure
-const defaultDB = { users: [], accessLogs: [] }
-
-function read() {
-  try {
-    if (!fs.existsSync(DB_PATH)) fs.writeFileSync(DB_PATH, JSON.stringify(defaultDB, null, 2))
-    return JSON.parse(fs.readFileSync(DB_PATH, 'utf-8'))
-  } catch {
-    return { ...defaultDB }
-  }
-}
-
-function write(db) {
-  fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2))
-}
+import User from './models/User.js'
+import AccessLog from './models/AccessLog.js'
 
 const db = {
   // ---- USERS ----
-  findUserByEmail(email) {
-    return read().users.find(u => u.email === email.toLowerCase()) || null
+  async findUserByEmail(email) {
+    return await User.findOne({ email: email.toLowerCase() })
   },
 
-  findUserById(id) {
-    return read().users.find(u => u._id === id) || null
+  async findUserById(id) {
+    return await User.findById(id)
   },
 
-  createUser({ name, email, password, phone, role }) {
-    const data = read()
-    const user = {
-      _id: randomUUID(),
+  async createUser({ name, email, password, phone, role }) {
+    const user = new User({
       name,
       email: email.toLowerCase(),
       password,
       phone: phone || '',
-      rfidTag: null,
-      hasMembership: false,
-      membershipPlan: '',
-      membershipStart: null,
-      membershipExpiry: null,
-      role: role || 'member',
-      isInsideGym: false,
-      createdAt: new Date().toISOString(),
-    }
-    data.users.push(user)
-    write(data)
-    return user
+      role: role || 'member'
+    })
+    return await user.save()
   },
 
-  updateUser(id, updates) {
-    const data = read()
-    const idx = data.users.findIndex(u => u._id === id)
-    if (idx === -1) return null
-    data.users[idx] = { ...data.users[idx], ...updates }
-    write(data)
-    return data.users[idx]
+  async updateUser(id, updates) {
+    return await User.findByIdAndUpdate(id, updates, { new: true })
   },
 
-  getAllMembers() {
-    return read().users.filter(u => u.role === 'member')
+  async getAllMembers() {
+    return await User.find({ role: 'member' })
   },
 
-  findAdmin() {
-    return read().users.find(u => u.role === 'admin') || null
+  async findAdmin() {
+    return await User.findOne({ role: 'admin' })
   },
 
   // ---- ACCESS LOGS ----
-  createLog({ userId, type, method }) {
-    const data = read()
-    const log = {
-      _id: randomUUID(),
+  async createLog({ userId, type, method }) {
+    const log = new AccessLog({
       userId,
       type,
-      method: method || 'manual',
-      timestamp: new Date().toISOString(),
-    }
-    data.accessLogs.push(log)
-    write(data)
-    return log
+      method: method || 'manual'
+    })
+    return await log.save()
   },
 
-  getLogsByUser(userId) {
-    return read().accessLogs.filter(l => l.userId === userId).sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp))
+  async getLogsByUser(userId) {
+    return await AccessLog.find({ userId }).sort({ timestamp: -1 })
   },
 
-  countEntriesThisMonth(userId) {
+  async countEntriesThisMonth(userId) {
     const now = new Date()
-    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1).toISOString()
-    return read().accessLogs.filter(l => l.userId === userId && l.type === 'entry' && l.timestamp >= startOfMonth).length
+    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1)
+    return await AccessLog.countDocuments({
+      userId,
+      type: 'entry',
+      timestamp: { $gte: startOfMonth }
+    })
   },
 
-  hasEntryToday(userId) {
+  async hasEntryToday(userId) {
     const now = new Date()
-    const todayStr = now.toISOString()
-    return this.hasEntryOnDate(userId, todayStr)
+    const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+    const endOfDay = new Date(startOfDay)
+    endOfDay.setDate(endOfDay.getDate() + 1)
+
+    const entry = await AccessLog.findOne({
+      userId,
+      type: 'entry',
+      timestamp: { $gte: startOfDay, $lt: endOfDay }
+    })
+    return !!entry
   },
 
-  hasEntryOnDate(userId, dateStr) {
+  async hasEntryOnDate(userId, dateStr) {
     const dayStart = new Date(dateStr)
     dayStart.setHours(0, 0, 0, 0)
     const dayEnd = new Date(dayStart)
     dayEnd.setDate(dayEnd.getDate() + 1)
-    return read().accessLogs.some(l =>
-      l.userId === userId && l.type === 'entry' &&
-      new Date(l.timestamp) >= dayStart && new Date(l.timestamp) < dayEnd
-    )
+
+    const entry = await AccessLog.findOne({
+      userId,
+      type: 'entry',
+      timestamp: { $gte: dayStart, $lt: dayEnd }
+    })
+    return !!entry
   },
 
-  deleteUser(id) {
-    const data = read()
-    const idx = data.users.findIndex(u => u._id === id)
-    if (idx === -1) return false
-    data.users.splice(idx, 1)
+  async deleteUser(id) {
+    const user = await User.findByIdAndDelete(id)
+    if (!user) return false
     // Also remove their access logs
-    data.accessLogs = data.accessLogs.filter(l => l.userId !== id)
-    write(data)
+    await AccessLog.deleteMany({ userId: id })
     return true
   },
 }

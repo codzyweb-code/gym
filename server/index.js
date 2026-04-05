@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
+import mongoose from 'mongoose'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
@@ -12,7 +13,12 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 dotenv.config({ path: path.join(__dirname, '.env') })
 
 const app = express()
-const PORT = process.env.API_PORT || 5001
+const PORT = process.env.PORT || 2011
+
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('✅ Connected to MongoDB Atlas'))
+  .catch((err) => console.error('❌ MongoDB Connection Error:', err))
 
 // Middleware
 app.use(cors({ origin: ['http://localhost:3000', 'http://localhost:5173'], credentials: true }))

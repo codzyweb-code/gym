@@ -5,13 +5,13 @@ import db from '../db.js'
 const router = Router()
 
 // POST /api/access/checkin — Log gym entry (RFID scan)
-router.post('/checkin', auth, (req, res) => {
+router.post('/checkin', auth, async (req, res) => {
   try {
-    const user = db.findUserById(req.user._id)
+    const user = await db.findUserById(req.user._id)
     if (!user.hasMembership) return res.status(403).json({ error: 'No active membership. Please purchase a plan.' })
-    if (db.hasEntryToday(user._id)) return res.status(400).json({ error: 'Already logged entry for today.' })
+    if (await db.hasEntryToday(user._id)) return res.status(400).json({ error: 'Already logged entry for today.' })
 
-    db.createLog({ userId: user._id, type: 'entry', method: req.body.method || 'rfid' })
+    await db.createLog({ userId: user._id, type: 'entry', method: req.body.method || 'rfid' })
 
     res.json({ message: 'Entry logged successfully.' })
   } catch (err) {
@@ -20,15 +20,15 @@ router.post('/checkin', auth, (req, res) => {
 })
 
 // GET /api/access/stats — Get member stats (entry-only)
-router.get('/stats', auth, (req, res) => {
+router.get('/stats', auth, async (req, res) => {
   try {
     const userId = req.user._id
 
     // Visits this month
-    const visitsThisMonth = db.countEntriesThisMonth(userId)
+    const visitsThisMonth = await db.countEntriesThisMonth(userId)
 
     // Total visits (all time)
-    const allLogs = db.getLogsByUser(userId).filter(l => l.type === 'entry')
+    const allLogs = (await db.getLogsByUser(userId)).filter(l => l.type === 'entry')
     const totalVisits = allLogs.length
 
     // Current streak — consecutive days with at least 1 entry
@@ -37,7 +37,7 @@ router.get('/stats', auth, (req, res) => {
     today.setHours(0, 0, 0, 0)
     let checkDate = new Date(today)
     while (true) {
-      if (db.hasEntryOnDate(userId, checkDate.toISOString())) {
+      if (await db.hasEntryOnDate(userId, checkDate.toISOString())) {
         streak++
         checkDate.setDate(checkDate.getDate() - 1)
       } else {
@@ -53,9 +53,9 @@ router.get('/stats', auth, (req, res) => {
 })
 
 // GET /api/access/history — Recent entry logs
-router.get('/history', auth, (req, res) => {
+router.get('/history', auth, async (req, res) => {
   try {
-    const entries = db.getLogsByUser(req.user._id)
+    const entries = (await db.getLogsByUser(req.user._id))
       .filter(l => l.type === 'entry')
       .reverse()
       .slice(0, 15)

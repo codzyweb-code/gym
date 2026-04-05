@@ -53,6 +53,10 @@ export default function AnimatedCounter({ end, duration = 2000, suffix = '', pre
           color: var(--color-accent);
           line-height: 1;
           margin-bottom: var(--space-sm);
+          text-shadow: 
+            0 0 10px rgba(200, 16, 46, 0.6),
+            0 0 20px rgba(200, 16, 46, 0.4);
+          animation: lunarPulse 4s ease-in-out infinite;
         }
         .counter__label {
           font-size: var(--fs-sm);
