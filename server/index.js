@@ -15,6 +15,13 @@ dotenv.config({ path: path.join(__dirname, '.env') })
 const app = express()
 const PORT = process.env.PORT || 2011
 
+// Health check (Public - Keep Render alive)
+// Placed at the very top to ensure it always works even if middleware or DB fails
+app.get('/health', (req, res) => {
+  console.log(`[${new Date().toISOString()}] Health check pinged`)
+  res.status(200).send('OK')
+})
+
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('✅ Connected to MongoDB Atlas'))
@@ -29,7 +36,7 @@ app.use('/api/auth', authRoutes)
 app.use('/api/access', accessRoutes)
 app.use('/api/admin', adminRoutes)
 
-// Health check
+// API status (internal check)
 app.get('/api/health', (req, res) => res.json({ status: 'ok', time: new Date().toISOString() }))
 
 // Serve frontend in production
