@@ -6,7 +6,9 @@ export default async function auth(req, res, next) {
     const token = req.headers.authorization?.split(' ')[1]
     if (!token) return res.status(401).json({ error: 'No token provided' })
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 's4fitness_jwt_secret_key_2026')
+    const secret = process.env.JWT_SECRET
+    if (!secret) throw new Error('JWT_SECRET not configured')
+    const decoded = jwt.verify(token, secret)
     const user = await db.findUserById(decoded.id)
     if (!user) return res.status(401).json({ error: 'User not found' })
 
@@ -15,6 +17,7 @@ export default async function auth(req, res, next) {
     req.user = safeUser
     next()
   } catch (err) {
+    console.error(`[AUTH ERROR] ${err.message}`)
     res.status(401).json({ error: 'Invalid token' })
   }
 }

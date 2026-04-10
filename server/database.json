@@ -16,19 +16,28 @@
       "createdAt": "2026-04-03T07:15:31.722Z"
     },
     {
-      "_id": "e8267a55-90aa-4f7f-8a8c-cd8279359748",
-      "name": "Browser Test",
-      "email": "browser@test.com",
-      "password": "$2b$12$vUHkkssO9Tl/.ZsLClvVCONAIV01l/e5BDr71aehmedKdFgHVjXR.",
+      "_id": "7e4c6222-70e3-428e-a144-c0ad26c8f59b",
+      "name": "Devdatt K B",
+      "email": "dev0011an@gmail.com",
+      "password": "$2b$12$3i0xNztVXopi7JD4udTIv.vkqPyqJXnSaXHLJKq2xtia9X8lNOpGW",
       "phone": "1234567890",
-      "rfidTag": null,
       "hasMembership": false,
       "membershipPlan": "",
-      "membershipStart": null,
-      "membershipExpiry": null,
       "role": "member",
       "isInsideGym": false,
-      "createdAt": "2026-04-03T18:08:42.813Z"
+      "createdAt": "2026-04-10T10:47:47.085Z"
+    },
+    {
+      "_id": "1c3b426f-b7a4-40b9-92e0-cf9b5c6376d1",
+      "name": "Test",
+      "email": "short@test.com",
+      "password": "$2b$12$Z7oy/BEy.wx18ad1.J.vGePU1KiQxqDwNgVbuq24qdqqjnI.om4Ei",
+      "phone": "",
+      "hasMembership": false,
+      "membershipPlan": "",
+      "role": "member",
+      "isInsideGym": false,
+      "createdAt": "2026-04-10T17:58:20.255Z"
     }
   ],
   "accessLogs": []

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { ArrowLeft, Clock, User, Calendar, Share2 } from 'lucide-react'
+import DOMPurify from 'isomorphic-dompurify'
 import ScrollReveal from '../../../components/ScrollReveal'
 
 const posts = {
@@ -83,7 +84,7 @@ export default function BlogPost() {
       <section className="section">
         <div className="container container--narrow">
           <ScrollReveal>
-            <article className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.content }} />
+            <article className="blog-post-content" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }} />
           </ScrollReveal>
           <div className="blog-post-footer">
             <Link href="/blog" className="btn btn--secondary">← More Articles</Link>

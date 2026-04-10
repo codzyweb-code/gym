@@ -80,15 +80,25 @@ router.post('/delete-member', auth, adminOnly, async (req, res) => {
   }
 })
 
-// POST /api/admin/create-admin — One-time setup
+// POST /api/admin/create-admin — One-time setup (protected by setup key)
 router.post('/create-admin', async (req, res) => {
   try {
+    // Require a setup key to prevent unauthorized admin creation
+    const setupKey = process.env.ADMIN_SETUP_KEY
+    const providedKey = req.headers['x-setup-key']
+    if (!setupKey || providedKey !== setupKey) {
+      return res.status(403).json({ error: 'Invalid or missing setup key.' })
+    }
+
     const adminExists = await db.findAdmin()
     if (adminExists) return res.status(400).json({ error: 'Admin already exists.' })
 
     const { name, email, password } = req.body
     if (!name || !email || !password) {
       return res.status(400).json({ error: 'Name, email, and password required.' })
+    }
+    if (password.length < 8) {
+      return res.status(400).json({ error: 'Admin password must be at least 8 characters.' })
     }
 
     const hashed = await bcrypt.hash(password, 12)

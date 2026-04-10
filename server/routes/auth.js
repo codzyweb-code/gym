@@ -6,8 +6,16 @@ import auth from '../middleware/auth.js'
 
 const router = Router()
 
-const SECRET = process.env.JWT_SECRET || 's4fitness_jwt_secret_key_2026'
-const signToken = (id) => jwt.sign({ id }, SECRET, { expiresIn: '30d' })
+// JWT secret — crash immediately if not configured (no fallback!)
+const getSecret = () => {
+  const secret = process.env.JWT_SECRET
+  if (!secret) {
+    throw new Error('FATAL: JWT_SECRET environment variable is not set. Server cannot sign tokens.')
+  }
+  return secret
+}
+
+const signToken = (id) => jwt.sign({ id }, getSecret(), { expiresIn: '30d' })
 
 // POST /api/auth/register
 router.post('/register', async (req, res) => {
