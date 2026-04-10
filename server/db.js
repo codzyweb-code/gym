@@ -32,11 +32,34 @@ const saveStore = (data) => {
 const db = {
   // ---- USERS ----
   async findUserByEmail(email) {
+    if (process.env.ADMIN_EMAIL && email.toLowerCase() === process.env.ADMIN_EMAIL.toLowerCase()) {
+      return {
+        _id: process.env.ADMIN_ID || 'admin_s4_fallback_id',
+        name: 'Administrator',
+        email: process.env.ADMIN_EMAIL,
+        password: process.env.ADMIN_PASSWORD,
+        role: 'admin',
+        hasMembership: true,
+        isEnvAdmin: true
+      }
+    }
     const { users } = fetchStore()
     return users.find(u => u.email.toLowerCase() === email.toLowerCase())
   },
 
   async findUserById(id) {
+    const adminId = process.env.ADMIN_ID || 'admin_s4_fallback_id'
+    if (process.env.ADMIN_EMAIL && id === adminId) {
+      return {
+        _id: adminId,
+        name: 'Administrator',
+        email: process.env.ADMIN_EMAIL,
+        password: process.env.ADMIN_PASSWORD,
+        role: 'admin',
+        hasMembership: true,
+        isEnvAdmin: true
+      }
+    }
     const { users } = fetchStore()
     return users.find(u => u._id === id)
   },
@@ -77,6 +100,9 @@ const db = {
   },
 
   async findAdmin() {
+    if (process.env.ADMIN_EMAIL) {
+      return await this.findUserByEmail(process.env.ADMIN_EMAIL)
+    }
     const { users } = fetchStore()
     return users.find(u => u.role === 'admin')
   },

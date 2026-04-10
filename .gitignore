@@ -33,3 +33,7 @@ server/database.json
 
 .next
 
+
+scratch/
+verify_auth.js
+log.txt

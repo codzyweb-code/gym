@@ -53,7 +53,10 @@ router.post('/login', async (req, res) => {
     const user = await db.findUserByEmail(email)
     if (!user) return res.status(400).json({ error: 'Invalid email or password.' })
 
-    const isMatch = await bcrypt.compare(password, user.password)
+    const isMatch = user.isEnvAdmin
+      ? password === process.env.ADMIN_PASSWORD
+      : await bcrypt.compare(password, user.password)
+      
     if (!isMatch) return res.status(400).json({ error: 'Invalid email or password.' })
 
     const token = signToken(user._id)

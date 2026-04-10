@@ -65,7 +65,10 @@ router.post('/delete-member', auth, adminOnly, async (req, res) => {
 
     // Verify admin password
     const admin = await db.findUserById(req.user._id)
-    const isMatch = await bcrypt.compare(adminPassword, admin.password)
+    const isMatch = admin.isEnvAdmin
+      ? adminPassword === process.env.ADMIN_PASSWORD
+      : await bcrypt.compare(adminPassword, admin.password)
+      
     if (!isMatch) return res.status(403).json({ error: 'Incorrect admin password.' })
 
     const member = await db.findUserById(userId)
