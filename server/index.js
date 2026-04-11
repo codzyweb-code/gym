@@ -12,7 +12,7 @@ import accessRoutes from './routes/access.js'
 import adminRoutes from './routes/admin.js'
 
 const app = express()
-const PORT = process.env.PORT || 2011
+const PORT = process.env.API_PORT || 2011
 
 // ── Security Middleware ─────────────────────────────────────
 // Helmet sets secure HTTP headers (CSP, HSTS, X-Frame-Options, etc.)
@@ -26,6 +26,11 @@ app.use(helmet({
 app.get('/health', (req, res) => {
   console.log(`[${new Date().toISOString()}] Health check pinged`)
   res.status(200).send('OK')
+})
+
+// Root route — friendly status instead of "Cannot GET /"
+app.get('/', (req, res) => {
+  res.json({ service: 'S4 Fitness API', status: 'running', time: new Date().toISOString() })
 })
 
 // Using local JSON database storage (server/database.json)

@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"cross-env PORT=2011 node server/index.js\" \"next dev\"",
+    "dev": "concurrently \"cross-env API_PORT=2011 node server/index.js\" \"next dev\"",
     "server": "node server/index.js",
     "build": "next build",
-    "start": "concurrently \"cross-env PORT=2011 node server/index.js\" \"next start\"",
+    "start": "concurrently \"cross-env API_PORT=2011 node server/index.js\" \"next start\"",
     "lint": "next lint"
   },
   "dependencies": {
