@@ -1,0 +1,12 @@
+node_modules
+.next
+.git
+.gitignore
+*.log
+*.md
+scratch/
+verify_auth.js
+log.txt
+build_output.txt
+dev_output.txt
+migration_log.txt

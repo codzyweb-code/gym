@@ -30,8 +30,7 @@ nextApp.prepare().then(() => {
     crossOriginEmbedderPolicy: false,
   }))
 
-  // Health check (Public - Keep Render alive)
-  // Placed at the very top to ensure it always works even if middleware or DB fails
+  // Health check — placed early so it always works even if middleware or DB fails
   app.get('/health', (req, res) => {
     console.log(`[${new Date().toISOString()}] Health check pinged`)
     res.status(200).send('OK')
@@ -61,8 +60,8 @@ nextApp.prepare().then(() => {
     return nextHandle(req, res)
   })
 
-  app.listen(PORT, () => {
-    console.log(`🚀 S4 Fitness running on http://localhost:${PORT}`)
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`🚀 S4 Fitness running on http://0.0.0.0:${PORT}`)
     console.log(`📁 Using local JSON database at server/database.json`)
     console.log(`🌍 Mode: ${dev ? 'development' : 'production'}`)
   })
